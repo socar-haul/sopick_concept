@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쏘픽 SOPICK — 월 예산으로 고르는 실매물 차량 구독</title>
+  <meta name="description" content="원하는 월 요금과 기간을 정하면, 그에 맞는 신차·중고차 실매물을 제안하는 프리미엄 차량 구독 플랫폼.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="쏘픽 홈">SOPICK<span class="brand__dot">.</span></a>
+      <nav class="nav__menu" aria-label="주요 메뉴">
+        <a href="#explore" id="navExplore">전체 차량</a>
+        <a href="#explore">신차 스탁</a>
+        <a href="#explore">신차 주문</a>
+        <a href="#explore">중고차</a>
+        <a href="#promise">쏘픽의 약속</a>
+      </nav>
+      <div class="nav__spacer"></div>
+      <div class="nav__actions">
+        <span class="nav__quote">견적함 <span class="num">0</span></span>
+        <a href="mypage.html" class="btn-login">마이페이지</a>
+        <button class="nav__burger" aria-label="메뉴 열기">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============== HERO / 컨피규레이터 ============== -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__head">
+          <span class="eyebrow">실매물 차량 구독</span>
+          <h1>내 예산에 맞는 차, <em>쏘픽</em></h1>
+          <p>원하는 월 요금과 기간에 탈 수 있는 신차·중고차를 확인하세요.</p>
+
+          <div class="panel">
+            <div class="panel__row">
+              <div class="panel__label">
+                <span class="lab">월 예산</span>
+                <span class="budget__value"><span class="per">월</span><span class="amt num" id="budgetAmt">80</span><span class="won">만원</span></span>
+              </div>
+              <div class="range"><input type="range" class="sl" id="budgetRange" aria-label="월 예산"></div>
+              <div class="range__ticks"><span>40만</span><span>100만</span><span>150만</span><span>200만</span><span>280만원</span></div>
+              <div class="chips" id="budgetChips" role="group" aria-label="예산 빠른 선택">
+                <button class="chip" data-v="400000">월 40만</button>
+                <button class="chip" data-v="600000">월 60만</button>
+                <button class="chip" data-v="800000">월 80만</button>
+                <button class="chip" data-v="1200000">월 120만</button>
+              </div>
+            </div>
+
+            <div class="panel__row">
+              <div class="panel__label">
+                <span class="lab">이용 기간</span>
+                <span class="panel__value term__value" id="termVal"><b>60</b>개월</span>
+              </div>
+              <div class="range"><input type="range" class="sl" id="termRange" min="1" max="60" step="1" aria-label="이용 기간(개월)"></div>
+              <div class="range__ticks"><span>1</span><span>12</span><span>24</span><span>36</span><span>48</span><span>60개월</span></div>
+            </div>
+
+            <ul class="hero__trust">
+              <li>보험 · 정비 · 자동차세를 월 요금에 모두 포함</li>
+              <li>초기비용 0원, 오늘 계약하고 내일 출고</li>
+              <li>위약금 없이 인수하거나 다른 쏘픽카로 변경</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 차량 모델 카드뷰 (2/3): 차량 구분 탭 + 이미지 캐러셀 + 텍스트 스펙 -->
+        <div class="hero__show">
+          <div class="stage" id="stage" data-id="">
+            <!-- ① 세그먼트 컨트롤 (유지) -->
+            <div class="type-tabs" id="typeSeg" role="group" aria-label="차량 구분">
+              <span class="type-tabs__ind" aria-hidden="true"></span>
+              <button data-type="all" aria-pressed="true">전체<span class="cnt">0</span></button>
+              <button data-type="stock">신차 스탁<span class="cnt">0</span></button>
+              <button data-type="order">신차 주문<span class="cnt">0</span></button>
+              <button data-type="used">중고차<span class="cnt">0</span></button>
+            </div>
+
+            <!-- ② 정보 — 상단 압축 헤더: (좌) 모델명·통합 스펙 + 추천 / (우) 월요금 강조 -->
+            <div class="stage__center">
+              <div class="stage__headline">
+                <div class="stage__title">
+                  <div class="name" id="stageName">—</div>
+                  <div class="stage__specs" id="stageSpecs"></div>
+                </div>
+                <div class="stage__price">
+                  <div class="p num" id="stagePrice">—</div>
+                  <div class="stage__price-meta">
+                    <span class="stage__badge"><span class="dot"></span>예산 내 추천</span>
+                    <span class="u">월 · <b id="stageTermNote">60</b>개월 기준</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ③ 차량 사진 — 좌/우 화살표 = 다른 모델 전환, 사진 클릭 = 상세 -->
+            <div class="stage__viz">
+              <div class="stage__carousel" id="heroCarousel">
+                <div class="stage__track" id="heroTrack"></div>
+                <button class="stage__nav prev" aria-label="이전 모델"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4 6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button class="stage__nav next" aria-label="다음 모델"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+
+            <!-- ④ 차량 옵션 — 사진 하단, 작게, 클릭으로만 이미지 변경 (디폴트 6개) -->
+            <div class="stage__thumbs-wrap">
+              <div class="stage__thumbs" id="stageThumbs"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== EXPLORER (첫 화면의 핵심: 탐색) ============== -->
+    <section class="explorer" id="explore">
+      <div class="explorer__bar">
+        <div class="wrap explorer__bar-inner">
+          <span class="explorer__title">탐색 결과 <span class="num" id="resultCount">0</span>대</span>
+          <div class="filters">
+            <div class="select"><select id="fBrand" aria-label="브랜드"></select></div>
+            <div class="select"><select id="fSegment" aria-label="차급"></select></div>
+            <div class="select"><select id="fFuel" aria-label="연료"></select></div>
+            <div class="select"><select id="fAvail" aria-label="출고 가능일"></select></div>
+          </div>
+          <div class="filters__spacer"></div>
+          <div class="select"><select id="fSort" aria-label="정렬">
+            <option value="recommend">추천순</option>
+            <option value="priceAsc">낮은 월요금순</option>
+            <option value="priceDesc">높은 월요금순</option>
+            <option value="avail">빠른 출고순</option>
+          </select></div>
+          <button class="btn-reset" id="btnReset">필터 초기화</button>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <!-- ============== 브랜드 차별점 ============== -->
+    <section class="section section--tint">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="eyebrow">Why SOPICK</span>
+          <h2>차를 사는 대신, 기간으로 소유합니다.</h2>
+          <p>복잡한 견적과 긴 약정 없이. 쏘픽은 실매물만 다루고, 월 요금 안에 모든 걸 담았습니다.</p>
+        </div>
+        <div class="diff">
+          <div class="diff__card">
+            <div class="diff__num">01</div>
+            <div class="diff__ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l7 3v5c0 4-3 7-7 9-4-2-7-5-7-9V5l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>보이는 건 모두 실매물</h3>
+            <p>지금 계약하면 오늘·내일 출고되는 실제 재고만 노출합니다. 상상 속 모델이 아니라, 탈 수 있는 차만 보여줘요.</p>
+          </div>
+          <div class="diff__card">
+            <div class="diff__num">02</div>
+            <div class="diff__ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11h16M3 11l3-6h10l3 6M6 15h.01M16 15h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>월 요금 하나로 끝</h3>
+            <p>보험료·정비·자동차세를 월 대여료에 모두 포함했습니다. 예상 못 한 비용 없이, 매달 같은 금액만 내면 됩니다.</p>
+          </div>
+          <div class="diff__card">
+            <div class="diff__num">03</div>
+            <div class="diff__ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 8h11l-2-3M18 14H7l2 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>인수도, 변경도 자유롭게</h3>
+            <p>타보고 마음에 들면 인수, 아니면 위약금 없이 다른 쏘픽카로 변경. 남은 계약은 차액만 정산하면 됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 인기 카테고리 ============== -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="eyebrow">이용 목적별</span>
+          <h2>지금 필요한 이유로 골라보세요.</h2>
+          <p>카테고리를 누르면 조건에 맞는 실매물만 위 탐색 결과에 바로 반영됩니다.</p>
+        </div>
+        <div class="cats" id="catGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============== 약속 ============== -->
+    <section class="section section--dark" id="promise">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="eyebrow">Our Promise</span>
+          <h2>쏘픽이 보장하는 약속</h2>
+          <p>구독하는 동안, 차에 대한 걱정은 쏘픽이 대신합니다.</p>
+        </div>
+        <div class="promise">
+          <div class="promise__list">
+            <div class="promise__item"><div class="promise__k">01</div><div class="promise__c"><h3>초기비용 0원으로 시작</h3><p>선수금 없이 계약하고 바로 출고. 목돈 없이도 원하는 차를 오늘부터 탈 수 있습니다.</p></div></div>
+            <div class="promise__item"><div class="promise__k">02</div><div class="promise__c"><h3>보험·정비·세금 완전 포함</h3><p>사고 대비 보험, 정기 점검과 소모품, 매년 나가는 자동차세까지 월 요금 안에 모두 들어 있습니다.</p></div></div>
+            <div class="promise__item"><div class="promise__k">03</div><div class="promise__c"><h3>1~60개월, 원하는 만큼만</h3><p>딱 필요한 기간만 이용하세요. 짧게는 한 달, 길게는 5년. 기간이 길수록 월 요금은 더 내려갑니다.</p></div></div>
+            <div class="promise__item"><div class="promise__k">04</div><div class="promise__c"><h3>인수·변경 위약금 없음</h3><p>계약 도중이라도 다른 쏘픽카로 갈아타거나, 타던 차를 인수할 수 있습니다. 부담 없이 결정하세요.</p></div></div>
+          </div>
+          <aside class="promise__aside">
+            <div class="big num">100%</div>
+            <div class="cap">노출되는 모든 차량은 지금 계약 가능한 <b style="color:#fff">실매물</b>입니다. 월 요금에는 보험·정비·세금이 빠짐없이 포함됩니다.</div>
+            <div class="promise__stats">
+              <div><div class="num">1~60</div><div class="lab">개월 자유 선택</div></div>
+              <div><div class="num">₩0</div><div class="lab">초기 비용</div></div>
+              <div><div class="num">34+</div><div class="lab">실시간 실매물</div></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 스페셜 프라이스 ============== -->
+    <section class="section section--tint">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="eyebrow">Special Price</span>
+          <h2>이달의 스페셜 프라이스</h2>
+          <p>재고 조정으로 이번 달만 월 요금을 낮춘 차량들. 조기 마감될 수 있어요.</p>
+        </div>
+      </div>
+      <div class="wrap"><div class="special__scroller" id="spGrid"></div></div>
+    </section>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="brand">SOPICK<span class="brand__dot">.</span></div>
+          <p>실매물 기반의 프리미엄 차량 구독. 월 예산으로 고르고, 원하는 기간만 이용하세요.</p>
+        </div>
+        <div class="footer__col"><h4>차량</h4><a href="#explore">신차 스탁</a><a href="#explore">신차 주문</a><a href="#explore">중고차</a><a href="#explore">전기차</a></div>
+        <div class="footer__col"><h4>이용 안내</h4><a href="#promise">이용 방법</a><a href="#promise">인수·변경</a><a href="#promise">보험·정비</a><a href="#explore">자주 묻는 질문</a></div>
+        <div class="footer__col"><h4>회사</h4><a href="#">브랜드 소개</a><a href="#">채용</a><a href="#">제휴 문의</a><a href="#">고객센터</a></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 SOPICK. 표시된 요금·재고는 데모용 샘플 데이터입니다.</span>
+        <span class="num">사업자 000-00-00000 · 여신금융협회 등록 렌터카 사업자</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============== MODAL ============== -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="차량 상세 및 견적">
+    <div class="modal__scrim"></div>
+    <div class="modal__panel">
+      <button class="modal__close" aria-label="닫기"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <div id="mdContent"></div>
+    </div>
+  </div>
+
+  <script src="data.js?v=13"></script>
+  <script src="app.js?v=13"></script>
+</body>
+</html>
