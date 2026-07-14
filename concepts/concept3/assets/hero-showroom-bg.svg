@@ -1,0 +1,51 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#F8FAFD"/>
+  <rect y="84" width="1920" height="996" fill="url(#wall)"/>
+  <path d="M0 324C184 435 361 480 553 491C767 503 936 457 1114 390C1303 319 1499 245 1920 238V1080H0V324Z" fill="url(#leftSweep)" opacity=".78"/>
+  <path d="M1356 84C1293 207 1261 333 1246 459C1234 560 1243 689 1277 831H1920V84H1356Z" fill="url(#rightShell)" opacity=".86"/>
+  <path d="M1920 250C1771 287 1662 353 1570 447C1440 580 1350 757 1278 1080H1920V250Z" fill="url(#rightGlass)" opacity=".62"/>
+  <path d="M1501 84L1325 538" stroke="#D5C092" stroke-width="2" opacity=".65"/>
+  <path d="M1519 84L1350 535" stroke="#EEE4C4" stroke-width="1" opacity=".75"/>
+  <g opacity=".46">
+    <path d="M1454 472V980" stroke="#D9E2EC"/>
+    <path d="M1499 450V980" stroke="#D9E2EC"/>
+    <path d="M1544 430V980" stroke="#D9E2EC"/>
+    <path d="M1589 408V980" stroke="#D9E2EC"/>
+    <path d="M1634 389V980" stroke="#D9E2EC"/>
+    <path d="M1679 371V980" stroke="#D9E2EC"/>
+  </g>
+  <path d="M0 842C259 789 544 765 854 765C1220 765 1582 805 1920 875V1080H0V842Z" fill="url(#floor)"/>
+  <path d="M0 838C259 786 544 761 854 761C1220 761 1582 802 1920 872" stroke="#E7EEF6" stroke-width="2"/>
+  <ellipse cx="965" cy="934" rx="620" ry="84" fill="url(#floorGlow)" opacity=".72"/>
+  <rect x="0" y="83" width="1920" height="1" fill="#DDE3EA"/>
+  <defs>
+    <linearGradient id="wall" x1="960" y1="84" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".45" stop-color="#F8FAFD"/>
+      <stop offset="1" stop-color="#EAF1F8"/>
+    </linearGradient>
+    <linearGradient id="leftSweep" x1="0" y1="360" x2="1095" y2="838" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5EEF7"/>
+      <stop offset=".45" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F7FAFD"/>
+    </linearGradient>
+    <linearGradient id="rightShell" x1="1283" y1="76" x2="1920" y2="779" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".55" stop-color="#F0F4F9"/>
+      <stop offset="1" stop-color="#E3EBF5"/>
+    </linearGradient>
+    <linearGradient id="rightGlass" x1="1410" y1="381" x2="1902" y2="1058" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DDE8F3"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="960" y1="746" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FAFD"/>
+      <stop offset=".6" stop-color="#EDF3F9"/>
+      <stop offset="1" stop-color="#DEE9F3"/>
+    </linearGradient>
+    <radialGradient id="floorGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(965 934) rotate(90) scale(84 620)">
+      <stop stop-color="#D9E4EE"/>
+      <stop offset="1" stop-color="#D9E4EE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
