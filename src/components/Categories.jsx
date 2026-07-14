@@ -57,8 +57,9 @@ function FeaturedCard({ feature }) {
 }
 
 function MiniCard({ icon, title, desc, children }) {
+  /* 모바일: 텍스트 좌 + 이미지 우 가로형 / 데스크탑(lg): 세로형 */
   return (
-    <article className="flex flex-col justify-between gap-2 overflow-hidden rounded-2xl border border-line bg-soft/70 p-4 transition-shadow hover:shadow-[0_8px_28px_rgba(16,24,40,0.08)] sm:p-5">
+    <article className="flex items-center justify-between gap-3 overflow-hidden rounded-2xl border border-line bg-soft/70 p-4 transition-shadow hover:shadow-[0_8px_28px_rgba(16,24,40,0.08)] sm:p-5 lg:flex-col lg:items-stretch lg:gap-2">
       <div className="min-w-0">
         <div className="flex items-center gap-2">
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
@@ -72,7 +73,7 @@ function MiniCard({ icon, title, desc, children }) {
           <Icon name="chevronRight" size={13} />
         </a>
       </div>
-      <div className="relative self-end">{children}</div>
+      <div className="relative shrink-0 lg:self-end">{children}</div>
     </article>
   )
 }

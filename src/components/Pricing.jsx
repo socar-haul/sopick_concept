@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Icon } from '../icons.jsx'
 import { BUDGETS, CARS, TERM_FACTOR, TYPE_META, fmtFee } from '../data.js'
 import { useReveal } from '../hooks.js'
@@ -10,7 +10,7 @@ function CarCard({ car, term, compared, similar, onToggleCompare }) {
   const fee = fmtFee(car.fee24, term)
 
   return (
-    <article className="flex w-[272px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(16,24,40,0.12)] lg:w-auto lg:shrink lg:snap-align-none">
+    <article className="flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(16,24,40,0.12)]">
       {/* 이미지 영역 */}
       <div className="relative overflow-hidden bg-soft/70 px-4 pt-11 pb-2">
         <span className={`absolute top-3 left-3 z-10 rounded-md px-2.5 py-1 text-xs font-bold ${meta.chip}`}>
@@ -88,7 +88,6 @@ function CarCard({ car, term, compared, similar, onToggleCompare }) {
 export default function Pricing({ compareIds, onToggleCompare }) {
   const [budget, setBudget] = useState('b120')
   const [term, setTerm] = useState(24)
-  const railRef = useRef(null)
   const ref = useReveal()
 
   /* 예산에 맞는 매물 + 3대 미만이면 가장 가까운 요금의 매물로 채움 */
@@ -108,10 +107,6 @@ export default function Pricing({ compareIds, onToggleCompare }) {
     return { shown: [...matches, ...fillers], matchCount: matches.length }
   }, [budget, term])
 
-  const scroll = (dir) => {
-    railRef.current?.scrollBy({ left: dir * 300, behavior: 'smooth' })
-  }
-
   return (
     <section ref={ref} className="shell pt-16 pb-20 md:pt-20" id="pricing">
       <div className="reveal flex flex-wrap items-end justify-between gap-4">
@@ -123,22 +118,12 @@ export default function Pricing({ compareIds, onToggleCompare }) {
             예산을 고르면 24시간 배송, 신차 주문, 중고차를 함께 비교합니다
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="h-10 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-faint"
-          >
-            전체 보기
-          </button>
-          <div className="flex gap-1.5 lg:hidden">
-            <button type="button" onClick={() => scroll(-1)} aria-label="이전 차량" className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-sub transition-colors hover:border-faint hover:text-ink">
-              <Icon name="chevronLeft" size={16} />
-            </button>
-            <button type="button" onClick={() => scroll(1)} aria-label="다음 차량" className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-sub transition-colors hover:border-faint hover:text-ink">
-              <Icon name="chevronRight" size={16} />
-            </button>
-          </div>
-        </div>
+        <button
+          type="button"
+          className="h-10 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-faint"
+        >
+          전체 보기
+        </button>
       </div>
 
       <div className="reveal mt-7 grid gap-5 lg:grid-cols-[248px_1fr]">
@@ -216,10 +201,7 @@ export default function Pricing({ compareIds, onToggleCompare }) {
             )}
             <span className="ml-2 text-faint">· {term}개월 계약 기준 월 요금</span>
           </p>
-          <div
-            ref={railRef}
-            className="no-scrollbar -mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 xl:grid-cols-3"
-          >
+          <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
             {shown.map(({ car, similar }) => (
               <CarCard
                 key={car.id}
