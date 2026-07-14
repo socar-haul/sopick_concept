@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+
+  --color-primary: #1b5bf2;
+  --color-primary-dark: #1449d6;
+  --color-primary-soft: #eaf1ff;
+  --color-ink: #101828;
+  --color-sub: #667085;
+  --color-faint: #98a2b3;
+  --color-line: #e4e9f1;
+  --color-soft: #f4f6fb;
+  --color-navy: #0f1b2e;
+  --color-navy-deep: #0a1422;
+  --color-mint: #00a876;
+  --color-mint-soft: #e5f7f0;
+  --color-violet: #7a5af8;
+  --color-violet-soft: #f1edfe;
+  --color-amber: #f79009;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-ink antialiased;
+  font-feature-settings: "tnum";
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+}
+
+/* 1920 캔버스 기준: 컨테이너 최대 1440px + 좌우 아웃 마진 80px */
+.shell {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .shell {
+    padding-inline: 80px;
+  }
+}
+
+/* 커스텀 셀렉트 화살표 */
+.select-caret {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%2398a2b3' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* 스크롤 리빌 */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* 히어로 로드 시퀀스 */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-drive {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-drive {
+  animation: hero-drive 1.1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .hero-rise,
+  .hero-drive {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+}
+
+/* 가로 스크롤 스크롤바 숨김 (카드 캐러셀) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}

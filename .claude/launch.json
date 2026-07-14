@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sopick-marketplace",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/socar/claude_sopick/sopick_marketplace", "--", "--port", "5199"],
+      "port": 5199
+    }
+  ]
+}
