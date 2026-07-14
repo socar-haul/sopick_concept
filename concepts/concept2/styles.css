@@ -490,10 +490,28 @@ input[type=range].sl::-moz-range-thumb{ width:22px; height:22px; border-radius:5
   .stage__price .p{ font-size:26px; }
   .budget__value .amt{ font-size:32px; }
   .promise__aside .big{ font-size:42px; }
-  .stage{ min-height:440px; }
-  .stage__slide{ padding:12px 40px; }
-  .stage__slide img{ max-height:230px; }
+  /* ── 모바일 히어로: 대표 차량(상) → 요금/기간 슬라이더(하), 스크롤 없이 한 화면 ── */
+  .hero{ padding:14px 0 22px; }
+  .hero__grid{ display:flex; flex-direction:column; gap:14px; }
+  .hero__show{ order:1; }                         /* 대표 차량을 위로 */
+  .hero__head{ order:2; }                          /* 요금/기간 슬라이더를 아래로 */
+  .hero__head .eyebrow, .hero__head h1, .hero__head p{ display:none; }  /* 헤딩 비노출 */
+  .hero__trust{ display:none; }                    /* 장점 문구 비노출 */
+  .stage__thumbs-wrap{ display:none; }             /* 상세 옵션 사진 비노출 */
+  .stage__specs{ display:none; }                   /* 통합 스펙 비노출 */
+  .stage{ min-height:0; }
+  .stage__viz{ min-height:0; }
+  .stage__center{ position:static; padding:12px 16px 2px; background:none; }  /* 플로팅 해제: 이름·요금을 사진 위 흐름으로 */
+  .stage__center .name{ font-size:20px; }
+  .stage__price .p{ font-size:23px; }
+  .type-tabs{ margin:12px 12px 0; }
+  .stage__slide{ padding:2px 40px; }
+  .stage__slide img{ max-height:142px; }
   .stage__spec-line{ gap:12px 20px; }
+  .panel{ margin-top:0; padding:16px; }
+  .panel__row + .panel__row{ margin-top:13px; padding-top:13px; }
+  .budget__value .amt{ font-size:28px; }
+  .chips{ margin-top:10px; }
   .md-cta{ margin-left:-20px; margin-right:-20px; padding-left:20px; padding-right:20px; }
   .md-body{ padding:22px 20px 40px; }
   .md-hero{ padding:24px 20px 20px; }
