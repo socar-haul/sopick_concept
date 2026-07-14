@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Icon } from '../icons.jsx'
-import { CATEGORY_FEATURES, carById, fmtFee } from '../data.js'
+import { CATEGORY_FEATURES, asset, carById, fmtFee } from '../data.js'
 import { useReveal } from '../hooks.js'
 
 function FeaturedCard({ feature }) {
@@ -119,12 +119,12 @@ export default function Categories() {
 
         <MiniCard icon="car" title="24시간 배송" desc="공식 재고, 즉시 인도 가능한 신차">
           <div className="relative h-[70px] w-[128px]">
-            <img src="/cars/car812.png" alt="" className="absolute top-0 right-0 w-[84px] opacity-80" />
-            <img src="/cars/car689.png" alt="" className="absolute bottom-0 left-0 w-[92px] drop-shadow-md" />
+            <img src={asset('cars/car812.png')} alt="" className="absolute top-0 right-0 w-[84px] opacity-80" />
+            <img src={asset('cars/car689.png')} alt="" className="absolute bottom-0 left-0 w-[92px] drop-shadow-md" />
           </div>
         </MiniCard>
         <MiniCard icon="globe" title="중고 수입차" desc="프리미엄 수입차를 합리적인 가격에">
-          <img src="/cars/car810.png" alt="" className="w-[112px] drop-shadow-md" />
+          <img src={asset('cars/car810.png')} alt="" className="w-[112px] drop-shadow-md" />
         </MiniCard>
       </div>
 

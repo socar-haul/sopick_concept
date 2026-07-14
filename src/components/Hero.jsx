@@ -1,4 +1,5 @@
 import SearchPanel from './SearchPanel.jsx'
+import { asset } from '../data.js'
 
 export default function Hero() {
   return (
@@ -32,7 +33,7 @@ export default function Hero() {
           {/* 도로 경계선 위에 차량이 서 있는 구도 */}
           <div className="hero-drive relative self-end md:justify-self-end">
             <img
-              src="/cars/car789.png"
+              src={asset('cars/car789.png')}
               alt="테슬라 모델 Y"
               className="relative z-10 mx-auto -mt-16 -mb-6 w-[320px] drop-shadow-[0_30px_22px_rgba(10,20,34,0.45)] sm:w-[380px] md:-mt-[100px] md:-mb-8 lg:-mt-[120px] lg:w-[440px]"
             />

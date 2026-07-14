@@ -1,4 +1,5 @@
 import { Icon } from '../icons.jsx'
+import { asset } from '../data.js'
 import { useReveal } from '../hooks.js'
 
 const FEATURES = [
@@ -21,7 +22,7 @@ function SampleCard() {
       <div className="flex flex-wrap items-center gap-5">
         <div className="flex flex-1 items-center gap-4 min-w-[240px]">
           <div className="flex h-20 w-28 shrink-0 items-center justify-center rounded-xl bg-soft">
-            <img src="/cars/car789.png" alt="테슬라 모델 Y" className="h-16 object-contain" />
+            <img src={asset('cars/car789.png')} alt="테슬라 모델 Y" className="h-16 object-contain" />
           </div>
           <div>
             <p className="text-[11px] font-bold tracking-[0.08em] text-faint">TESLA</p>

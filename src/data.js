@@ -2,6 +2,9 @@
  * fee24: 24개월 계약 기준 월 요금(원) · 보험/정비/세금 포함, 월 주행거리 무제한
  */
 
+/* public/ 에셋 경로에 배포 base(예: /sopick_concept/concept1/)를 붙임 */
+export const asset = (p) => import.meta.env.BASE_URL + p.replace(/^\//, '')
+
 export const TYPE_META = {
   stock: { label: '24시간 배송', chip: 'bg-mint text-white', sub: '즉시 출고', subChip: 'bg-mint-soft text-mint' },
   order: { label: '신차 주문', chip: 'bg-primary text-white', sub: null, subChip: 'bg-primary-soft text-primary' },
@@ -15,43 +18,43 @@ export const CARS = [
   {
     id: 'ray', brand: '기아', model: '레이', trim: '1.0 가솔린 시그니처',
     type: 'stock', lead: '즉시 출고', fuel: '가솔린', segment: '경차', seats: 4,
-    fee24: 440000, img: '/cars/car354.png', detailImg: '/cars/car354_detail1.png', tags: ['인기'],
+    fee24: 440000, img: asset('cars/car354.png'), detailImg: asset('cars/car354_detail1.png'), tags: ['인기'],
   },
   {
     id: 'mini', brand: 'MINI', model: '쿠퍼 5도어', trim: '쿠퍼 S 클래식',
     type: 'order', lead: '주문 후 5-7주', fuel: '가솔린', segment: '소형', seats: 5,
-    fee24: 590000, img: '/cars/car808.png', detailImg: '/cars/car808_detail1.png', tags: ['수입'],
+    fee24: 590000, img: asset('cars/car808.png'), detailImg: asset('cars/car808_detail1.png'), tags: ['수입'],
   },
   {
     id: 'sportage', brand: '기아', model: '스포티지', trim: '1.6T 노블레스',
     type: 'stock', lead: '즉시 출고', fuel: '가솔린', segment: 'SUV', seats: 5,
-    fee24: 720000, img: '/cars/car689.png', detailImg: '/cars/car689_detail1.png', tags: ['인기'],
+    fee24: 720000, img: asset('cars/car689.png'), detailImg: asset('cars/car689_detail1.png'), tags: ['인기'],
   },
   {
     id: 'ioniq5', brand: '현대', model: '아이오닉 5', trim: '롱레인지 프레스티지',
     type: 'stock', lead: '출고 D+3', fuel: '전기', segment: 'SUV', seats: 5,
-    fee24: 880000, img: '/cars/car812.png', detailImg: '/cars/car812_detail1.png', tags: ['친환경'],
+    fee24: 880000, img: asset('cars/car812.png'), detailImg: asset('cars/car812_detail1.png'), tags: ['친환경'],
   },
   {
     id: 'gv80', brand: '제네시스', model: 'GV80', trim: '3.0 디젤 AWD',
     type: 'used', lead: '검수 A등급', fuel: '디젤', segment: 'SUV', seats: 5,
     year: 2021, odo: '4.1만km',
-    fee24: 980000, img: '/cars/car518.png', detailImg: '/cars/car518_detail.png', tags: ['프리미엄'],
+    fee24: 980000, img: asset('cars/car518.png'), detailImg: asset('cars/car518_detail.png'), tags: ['프리미엄'],
   },
   {
     id: 'modely', brand: '테슬라', model: '모델 Y', trim: '롱레인지 AWD',
     type: 'order', lead: '주문 후 4-6주', fuel: '전기', segment: 'SUV', seats: 5,
-    fee24: 1120000, img: '/cars/car789.png', detailImg: '/cars/car789_detail1.png', tags: ['인기', '친환경'],
+    fee24: 1120000, img: asset('cars/car789.png'), detailImg: asset('cars/car789_detail1.png'), tags: ['인기', '친환경'],
   },
   {
     id: 'xc60', brand: '볼보', model: 'XC60', trim: 'B5 얼티메이트',
     type: 'stock', lead: '즉시 출고', fuel: '하이브리드', segment: 'SUV', seats: 5,
-    fee24: 1290000, img: '/cars/car775.png', detailImg: '/cars/car775_detail1.png', tags: ['수입'],
+    fee24: 1290000, img: asset('cars/car775.png'), detailImg: asset('cars/car775_detail1.png'), tags: ['수입'],
   },
   {
     id: 'ix', brand: 'BMW', model: 'iX', trim: 'xDrive40',
     type: 'order', lead: '주문 후 6-8주', fuel: '전기', segment: 'SUV', seats: 5,
-    fee24: 1390000, img: '/cars/car767.png', detailImg: '/cars/car767_detail1.png', tags: ['수입', '친환경'],
+    fee24: 1390000, img: asset('cars/car767.png'), detailImg: asset('cars/car767_detail1.png'), tags: ['수입', '친환경'],
   },
 ]
 
