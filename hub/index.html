@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOPICK 컨셉 시안</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+      background: linear-gradient(160deg, #0f1b2e 0%, #0a1422 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { width: 100%; max-width: 960px; }
+    .logo { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; color: #5a8bff; }
+    h1 { margin-top: 14px; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+    .sub { margin-top: 10px; font-size: 15px; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .grid { margin-top: 40px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      display: block; text-decoration: none; color: inherit;
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 18px;
+      padding: 26px 24px; background: rgba(255,255,255,0.04);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    a.card:hover { transform: translateY(-4px); border-color: #5a8bff; background: rgba(90,139,255,0.08); }
+    .num { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); }
+    .card h2 { margin-top: 10px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+    .card p { margin-top: 8px; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.6); font-weight: 500; }
+    .badge {
+      display: inline-block; margin-top: 18px; padding: 6px 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+    }
+    .live { background: #1b5bf2; color: #fff; }
+    .soon { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+    .card.disabled { opacity: 0.55; cursor: default; }
+    footer { margin-top: 44px; font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="logo">SOPICK</div>
+    <h1>컨셉 시안 모음</h1>
+    <p class="sub">차량 구독 서비스 SOPICK의 디자인 컨셉 시안입니다. 시안을 선택해 살펴보세요.</p>
+
+    <div class="grid">
+      <a class="card" href="./concept1/">
+        <div class="num">CONCEPT 1</div>
+        <h2>마켓플레이스</h2>
+        <p>실매물 기반 검색과 월 요금 비교 중심의 커머스형 컨셉. 24시간 배송 · 신차 주문 · 중고차를 한 화면에서 비교합니다.</p>
+        <span class="badge live">바로 보기</span>
+      </a>
+
+      <div class="card disabled">
+        <div class="num">CONCEPT 2</div>
+        <h2>준비 중</h2>
+        <p>두 번째 시안이 완성되면 이 자리에 연결됩니다.</p>
+        <span class="badge soon">준비 중</span>
+      </div>
+
+      <div class="card disabled">
+        <div class="num">CONCEPT 3</div>
+        <h2>준비 중</h2>
+        <p>세 번째 시안이 완성되면 이 자리에 연결됩니다.</p>
+        <span class="badge soon">준비 중</span>
+      </div>
+    </div>
+
+    <footer>© 2026 SOPICK 컨셉 디자인 목업 — 모든 차량 정보와 요금은 예시입니다.</footer>
+  </main>
+</body>
+</html>

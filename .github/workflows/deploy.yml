@@ -24,11 +24,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Build with repo base path
-        run: GHPAGES_BASE="/${GITHUB_REPOSITORY#*/}/" npm run build
+      - name: Build concept1 (marketplace)
+        run: GHPAGES_BASE="/${GITHUB_REPOSITORY#*/}/concept1/" npm run build
+      - name: Assemble site (hub + concepts)
+        run: |
+          mkdir -p _site/concept1
+          cp -R hub/. _site/
+          cp -R dist/. _site/concept1/
+          if [ -d concepts ]; then cp -R concepts/. _site/; fi
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: _site
 
   deploy:
     needs: build
