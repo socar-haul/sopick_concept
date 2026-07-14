@@ -146,7 +146,7 @@ export default function SearchPanel() {
           </button>
           <button
             type="button"
-            className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-[15px] font-bold text-white shadow-[0_8px_20px_rgba(27,91,242,0.35)] transition-colors hover:bg-primary-dark sm:flex-none"
+            className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-[15px] font-bold text-white shadow-[0_8px_20px_rgba(0,105,255,0.35)] transition-colors hover:bg-primary-dark sm:flex-none"
           >
             <Icon name="search" size={18} />
             실매물 검색

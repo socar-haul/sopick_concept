@@ -68,7 +68,7 @@ function CarCard({ car, term, compared, similar, onToggleCompare }) {
               type="checkbox"
               checked={compared}
               onChange={() => onToggleCompare(car.id)}
-              className="h-3.5 w-3.5 accent-[#1b5bf2]"
+              className="h-3.5 w-3.5 accent-[#0069ff]"
             />
             비교 담기
           </label>

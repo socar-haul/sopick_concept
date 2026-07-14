@@ -104,7 +104,7 @@ export default function Categories() {
             onClick={() => setActive(f.key)}
             className={`flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all ${
               active === f.key
-                ? 'bg-primary text-white shadow-[0_6px_16px_rgba(27,91,242,0.3)]'
+                ? 'bg-primary text-white shadow-[0_6px_16px_rgba(0,105,255,0.3)]'
                 : 'border border-line bg-white text-sub hover:border-faint hover:text-ink'
             }`}
           >
