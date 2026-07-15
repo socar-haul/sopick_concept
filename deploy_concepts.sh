@@ -16,6 +16,7 @@ MSG="${1:-시안 일괄 업데이트}"
 
 declare -a SOURCES=(
   "../sopick_subscription/concepts/concept2|concepts/concept2"
+  "../sopick_subscription/concepts/concept2-ds|concepts/concept2-ds"
   "../sopick_agent/concepts/concept3|concepts/concept3"
 )
 
