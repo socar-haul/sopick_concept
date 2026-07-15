@@ -150,7 +150,8 @@ function positionSegInd(){
   const seg = $('#typeSeg'); if(!seg) return;
   const ind = seg.querySelector('.type-tabs__ind');
   const active = seg.querySelector('button[aria-pressed=true]');
-  if(!ind || !active || !active.offsetWidth) return;
+  if(!ind) return;
+  if(!active || !active.offsetWidth){ ind.style.width='0px'; return; }  // 숨겨진 탭(모바일 '전체' 등)이면 인디케이터 숨김
   const sr = seg.getBoundingClientRect(), ar = active.getBoundingClientRect();
   const cs = getComputedStyle(seg);
   const bl = parseFloat(cs.borderLeftWidth)||0, bt = parseFloat(cs.borderTopWidth)||0;
