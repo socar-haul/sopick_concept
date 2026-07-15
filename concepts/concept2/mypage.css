@@ -114,7 +114,7 @@
 .mpc-modal.is-open{ display:flex; }
 .mpc-scrim{ position:absolute; inset:0; background:rgba(12,14,18,.5); backdrop-filter:blur(3px); opacity:0; transition:opacity .25s var(--ease); }
 .mpc-modal.is-open .mpc-scrim{ opacity:1; }
-.mpc-panel{ position:relative; display:flex; flex-direction:column; width:min(728px,100%); max-height:calc(100vh - 48px); background:#fff; border-radius:var(--r-xl);
+.mpc-panel{ position:relative; display:flex; flex-direction:column; width:min(728px,100%); max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px); background:#fff; border-radius:var(--r-xl);
   box-shadow:0 30px 80px rgba(0,0,0,.4); overflow:hidden; transform:translateY(14px) scale(.99); opacity:0;
   transition:transform .3s var(--ease), opacity .3s var(--ease); }
 .mpc-modal.is-open .mpc-panel{ transform:none; opacity:1; }
