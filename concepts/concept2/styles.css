@@ -509,8 +509,8 @@ input[type=range].sl::-moz-range-thumb{ width:22px; height:22px; border-radius:5
   .type-tabs{ margin:12px 12px 0; }
   .type-tabs button{ white-space:nowrap; }                 /* 줄바꿈(2줄) 방지 */
   .type-tabs button[data-type="all"]{ display:none; }      /* '전체' 탭 미노출 → 3개 한 줄 */
-  .stage__slide{ padding:10px 10px 30px; }         /* 차량 사진 상단 10px(-10) / 하단 30px(+10) */
-  .stage__slide img{ max-height:200px; }
+  .stage__slide{ padding:10px 10px 30px; height:236px; }   /* 이미지 슬롯 높이 고정 → 차량 교체 시 높이 깜빡임 방지 */
+  .stage__slide img{ height:100%; max-height:none; }        /* 고정 슬롯을 꽉 채우고 contain */
   .stage__spec-line{ gap:12px 20px; }
   .panel{ margin-top:0; padding:18px 16px; border:none; border-radius:0 0 var(--r-xl) var(--r-xl); box-shadow:none; }  /* 슬라이더 = 하단만 라운드(상단 직각, 차량과 연결) */
   .panel__row + .panel__row{ margin-top:13px; padding-top:13px; }
