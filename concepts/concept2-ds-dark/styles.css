@@ -123,17 +123,17 @@ input[type=range]:focus-visible{ outline-offset:6px; }
 .hero__head{ display:flex; flex-direction:column; }
 .hero__show{ display:flex; flex-direction:column; }
 
-/* 차량 구분 탭 — SegmentedControl 다크 커스텀 (구조 동일, 색만 SOCAR 팔레트 내 다크값) */
+/* 차량 구분 탭 — SegmentedControl 다크 커스텀 (구조 동일, 색만 다크·대비 강화) */
 .type-tabs{ position:relative; z-index:2; display:flex; gap:0; margin:18px 18px 0; padding:4px; border-radius:16px;
-  height:44px; box-sizing:border-box; background:rgba(255,255,255,.06); flex-shrink:0; }
-.type-tabs__ind{ position:absolute; top:0; left:0; z-index:0; height:0; width:0; border-radius:12px; background:#4A5667;
-  box-shadow:0 2px 8px rgba(0,0,0,.3); pointer-events:none;
+  height:44px; box-sizing:border-box; background:rgba(0,0,0,.24); flex-shrink:0; }        /* 어두운 well → pill 대비↑ */
+.type-tabs__ind{ position:absolute; top:0; left:0; z-index:0; height:0; width:0; border-radius:12px; background:#697383;
+  box-shadow:0 2px 10px rgba(0,0,0,.45); pointer-events:none;                              /* pill 한 단계 밝게(gray-600) */
   transition:transform .2s ease, width .2s ease; }
-.type-tabs button{ position:relative; z-index:1; flex:1; height:36px; padding:6px; border-radius:12px; font-size:15px; font-weight:400; color:#B4BBCB; background:transparent; border:none; transition:color .2s var(--ease); }
-.type-tabs button .cnt{ font-family:var(--sans); font-size:15px; font-weight:400; color:#3393FF; opacity:1; margin-left:4px; transition:color .2s var(--ease); }
+.type-tabs button{ position:relative; z-index:1; flex:1; height:36px; padding:6px; border-radius:12px; font-size:15px; font-weight:400; color:#99A1B1; background:transparent; border:none; transition:color .2s var(--ease); }  /* 비활성 한 단계 흐리게(gray-500) */
+.type-tabs button .cnt{ font-family:var(--sans); font-size:15px; font-weight:400; color:#5AA9FF; opacity:1; margin-left:4px; transition:color .2s var(--ease); }  /* 카운트 밝은 블루 */
 .type-tabs button:hover{ color:#E5E8EF; }
 .type-tabs button[aria-pressed=true]{ color:#FFFFFF; }
-.type-tabs button[aria-pressed=true] .cnt{ color:#3393FF; }
+.type-tabs button[aria-pressed=true] .cnt{ color:#8FC5FF; }
 .hero__trust{ list-style:none; margin-top:auto; padding:18px 0 0; border-top:1px dashed var(--line-2); display:flex; flex-direction:column; gap:11px; text-align:left; }
 .hero__trust li{ position:relative; padding-left:28px; font-size:14px; color:var(--ink-3); font-weight:500; line-height:1.35; }
 .hero__trust li::before{ content:"✓"; position:absolute; left:0; top:-1px; width:20px; height:20px; border-radius:50%; background:var(--save-soft); color:var(--save); font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; }
