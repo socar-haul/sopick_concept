@@ -42,15 +42,37 @@
     .soon { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
     .card.disabled { opacity: 0.55; cursor: default; }
     footer { margin-top: 44px; font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500; }
+    /* 제품화(승격) — 강조 카드 */
+    .product-card {
+      display: block; text-decoration: none; color: inherit; margin-top: 32px;
+      border: 1px solid rgba(0,120,255,0.55); border-radius: 20px; padding: 30px 28px;
+      background: linear-gradient(135deg, rgba(0,120,255,0.16), rgba(0,120,255,0.04));
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .product-card:hover { transform: translateY(-4px); border-color: #0078ff; background: linear-gradient(135deg, rgba(0,120,255,0.24), rgba(0,120,255,0.08)); }
+    .product-card .num { color: #6bb5ff; }
+    .product-card h2 { margin-top: 10px; font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
+    .product-card p { margin-top: 8px; font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,0.72); font-weight: 500; max-width: 640px; }
+    .product-card .badge { background: #0078ff; color: #fff; }
+    .section-label { margin-top: 44px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: rgba(255,255,255,0.4); }
+    .section-label span { font-weight: 500; letter-spacing: 0; }
   </style>
 </head>
 <body>
   <main class="wrap">
     <div class="logo">SOPICK</div>
-    <h1>컨셉 시안 모음</h1>
-    <p class="sub">차량 구독 서비스 SOPICK의 디자인 컨셉 시안입니다. 시안을 선택해 살펴보세요.</p>
+    <h1>SOPICK 시안 & 제품화</h1>
+    <p class="sub">채택된 시안(컨셉 2 · 프리미엄 구독)을 제품화한 버전과, 초기 컨셉 시안 3종을 함께 확인할 수 있습니다.</p>
 
-    <div class="grid">
+    <a class="product-card" href="./product/">
+      <div class="num">PRODUCT · PHASE 1</div>
+      <h2>쏘픽 제품화</h2>
+      <p>채택된 프리미엄 구독 컨셉의 승격 버전. SOCAR-FRAME 2.0 디자인시스템을 적용했고, Phase 1 스펙(전기차·내연차 2분류, 테슬라 모델 Y 우선 노출)을 반영했습니다.</p>
+      <span class="badge">제품화 버전 보기</span>
+    </a>
+
+    <div class="section-label">컨셉 시안 아카이브 <span>· 초기 검토용 백업</span></div>
+    <div class="grid" style="margin-top:16px">
       <a class="card" href="./concept1/">
         <div class="num">CONCEPT 1</div>
         <h2>마켓플레이스</h2>

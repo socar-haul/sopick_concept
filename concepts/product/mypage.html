@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지 · 내 차 관리 — 쏘픽 SOPICK</title>
+  <meta name="description" content="구독 중인 차량을 관리하세요. 도어 컨트롤, 모델 변경, 결제·운전자 관리, 점검·긴급출동까지 한 곳에서.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css?v=p1">
+  <link rel="stylesheet" href="mypage.css?v=p1">
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <header class="nav">
+    <div class="mp-wrap nav__inner">
+      <a class="brand" href="index.html" aria-label="쏘픽 홈">SOPICK<span class="brand__dot">.</span></a>
+      <nav class="nav__menu" aria-label="주요 메뉴">
+        <a href="index.html#explore">전체 차량</a>
+        <a href="index.html#explore">신차 스탁</a>
+        <a href="index.html#explore">신차 주문</a>
+        <a href="index.html#explore">중고차</a>
+        <a href="index.html#promise">쏘픽의 약속</a>
+      </nav>
+      <div class="nav__spacer"></div>
+      <div class="nav__actions">
+        <span class="nav__quote">견적함 <span class="num">0</span></span>
+        <a href="mypage.html" class="btn-login">마이페이지</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mp-main">
+    <div class="mp-wrap">
+
+      <!-- 페이지 헤더 -->
+      <div class="mp-head">
+        <div>
+          <span class="eyebrow">내 차 관리</span>
+          <h1>구독 중인 <em>테슬라 모델 Y</em></h1>
+          <p>차량 상태를 확인하고, 필요한 관리를 바로 요청하세요.</p>
+        </div>
+      </div>
+
+      <div class="mp-layout">
+        <!-- 좌측: 차량 씬(상) + 차량 기능 제어(하) -->
+        <div class="mp-col mp-col--left">
+      <!-- ============== 차고 히어로 ============== -->
+      <section class="mp-garage">
+        <!-- 씬: 차량 + 상태 -->
+        <div class="mp-scene">
+          <div class="mp-scene__top">
+            <span class="mp-status is-locked" id="mpLockChip">
+              <span class="ic" id="mpLockIc"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.6" stroke="currentColor" stroke-width="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span id="mpLockText">주차됨 · 잠김</span>
+            </span>
+            <span class="mp-sub">구독 <b>D-412</b> · 60개월 플랜</span>
+          </div>
+
+          <div class="mp-car">
+            <img src="images/car789_detail1.png" alt="테슬라 모델 Y" decoding="async">
+            <div class="mp-car__glow"></div>
+          </div>
+
+          <div class="mp-vitals">
+            <div class="mp-vital"><div class="k">누적 주행</div><div class="v">18,240<span class="u">km</span></div></div>
+            <div class="mp-vital"><div class="k">이번 달 주행</div><div class="v">1,240<span class="u">km</span></div></div>
+            <div class="mp-vital"><div class="k">배터리</div><div class="v"><em>82</em><span class="u">%</span></div></div>
+            <div class="mp-vital"><div class="k">남은 구독</div><div class="v">412<span class="u">일</span></div></div>
+          </div>
+        </div>
+
+        <!-- 스마트키 -->
+        <div class="mp-control">
+          <div class="mp-control__h">
+            <span class="t">스마트키</span>
+          </div>
+          <div class="mp-keys" id="mpKeys">
+            <button class="mp-key" data-key="unlock">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V7.3A4 4 0 0 1 15.4 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <span class="lb">문열기</span>
+            </button>
+            <button class="mp-key" data-key="lock">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11" stroke="currentColor" stroke-width="1.7"/></svg></span>
+              <span class="lb">잠그기</span>
+            </button>
+            <button class="mp-key" data-key="horn">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9.5v5h3l5 3.5V6L7 9.5H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.5 9.5a4 4 0 0 1 0 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M18 7a7 7 0 0 1 0 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <span class="lb">경적</span>
+            </button>
+            <button class="mp-key" data-key="hazard">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4.5l8 14.5H4l8-14.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 10.5v3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="16.6" r="0.7" fill="currentColor"/></svg></span>
+              <span class="lb">비상등</span>
+            </button>
+            <button class="mp-key" data-key="locate">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s6.5-5.6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg></span>
+              <span class="lb">위치보기</span>
+            </button>
+          </div>
+        </div>
+      </section>
+        </div><!-- /좌측 -->
+
+        <!-- 우측: 셀프 서비스 리스트 -->
+        <div class="mp-col mp-col--right">
+      <!-- ============== 셀프 서비스 ============== -->
+      <section class="mp-services">
+        <h2 class="mp-services__h">셀프 서비스</h2>
+        <p class="sub">번거로운 방문 없이, 필요한 관리를 여기서 바로 처리하세요.</p>
+        <div class="mp-grid" id="mpGrid">
+
+          <button class="mp-card mp-card--feature" id="mpChangeModel">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h11l-2.5-3M20 16H9l2.5 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>다른 모델로 변경</h3>
+            <p>계약 기간 중에도 위약금 없이 원하는 쏘픽카로 갈아탈 수 있어요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+          <button class="mp-card" data-svc="결제수단 변경">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3 9.5h18" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 14.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h3>결제수단 변경</h3>
+            <p>월 요금이 결제되는 카드·계좌를 바꿀 수 있어요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+          <button class="mp-card" data-svc="추가 운전자 등록/삭제">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18 7v6M21 10h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h3>추가 운전자 등록/삭제</h3>
+            <p>가족·지인을 운전자로 등록하거나 삭제하세요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+          <button class="mp-card" data-svc="주행거리 변경">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 15l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15" r="1.4" fill="currentColor"/></svg></div>
+            <h3>주행거리 변경</h3>
+            <p>월 주행거리 한도를 조정하면 요금도 함께 바뀌어요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+          <button class="mp-card" data-svc="사고 접수">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4l8.5 15H3.5L12 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.5" r="1" fill="currentColor"/></svg></div>
+            <h3>사고 접수</h3>
+            <p>사고 상황을 접수하면 담당자가 바로 안내해 드려요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+          <button class="mp-card" data-svc="점검/수리 예약">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 6.5a3.5 3.5 0 0 1-4.6 4.6L5 16l3 3 4.9-4.9a3.5 3.5 0 0 1 4.6-4.6l-2.3 2.3-1.7-1.7 2.3-2.3a3.5 3.5 0 0 0-1.3-.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+            <h3>점검/수리 예약</h3>
+            <p>가까운 정비 파트너에서 원하는 시간에 예약하세요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+          <button class="mp-card mp-card--urgent" data-svc="긴급출동" data-urgent="1">
+            <div class="mp-card__ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5V17a2 2 0 0 1-2 2A13 13 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+            <h3>긴급출동</h3>
+            <p>배터리 방전·타이어 등 긴급 상황, 24시간 출동해요.</p>
+            <span class="mp-card__go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+
+        </div>
+      </section>
+        </div><!-- /우측 -->
+      </div><!-- /layout -->
+
+    </div>
+  </main>
+
+  <!-- 모델 변경 비교 모달 -->
+  <div class="mpc-modal" id="mpcModal" role="dialog" aria-modal="true" aria-label="다른 모델로 변경">
+    <div class="mpc-scrim" data-mpc-close></div>
+    <div class="mpc-panel">
+      <div class="mpc-head">
+        <div class="mpc-head__bar">
+          <div>
+            <h2>다른 모델로 변경</h2>
+            <div class="sub">위약금 없이, 지금 타는 차와 비교하고 갈아타세요.</div>
+          </div>
+          <button class="mpc-close" data-mpc-close aria-label="닫기"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        </div>
+        <div class="mpc-vehicles mpc-2" id="mpcVehicles"></div>
+      </div>
+      <div class="mpc-body" id="mpcBody"></div>
+      <div class="mpc-foot" id="mpcFoot"></div>
+    </div>
+  </div>
+
+  <!-- 토스트 -->
+  <div class="mp-toast" id="mpToast"><span class="dot"></span><span id="mpToastText"></span></div>
+
+  <script src="data.js?v=p1"></script>
+  <script src="mypage.js?v=p1"></script>
+</body>
+</html>
