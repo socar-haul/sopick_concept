@@ -17,6 +17,7 @@ MSG="${1:-시안 일괄 업데이트}"
 declare -a SOURCES=(
   "../sopick_subscription/concepts/concept2|concepts/concept2"
   "../sopick_agent/concepts/concept3|concepts/concept3"
+  "../foundation|concepts/foundation"
 )
 
 echo "── 원본 → 저장소 동기화 ──"

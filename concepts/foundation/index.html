@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOPICK Foundation — 컴포넌트 갤러리</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { background: var(--gray-50); }
+  .gallery { max-width: 920px; margin: 0 auto; padding: 32px var(--page-pad) 96px; }
+  .gallery__head h1 { font: var(--heading1); color: var(--text-strong); margin: 0 0 6px; }
+  .gallery__head p { font: var(--body3); color: var(--text-secondary); margin: 0 0 8px; }
+  .gallery__head code { font-family: ui-monospace, monospace; background: var(--gray-200); padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+  section { margin-top: 40px; }
+  section > h2 { font: var(--heading3); color: var(--text-strong); margin: 0 0 4px; }
+  section > .desc { font: var(--body4); color: var(--text-tertiary); margin: 0 0 16px; }
+  .demo { background: var(--surface); border: 1px solid var(--border-regular); border-radius: var(--radius-350); padding: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .demo--col { flex-direction: column; align-items: stretch; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: 10px; align-items: start; align-content: start; width: 100%; }
+  .sw { border: 1px solid var(--border-regular); border-radius: var(--radius-250); overflow: hidden; font: var(--caption2); }
+  .sw i { display: block; height: 44px; }
+  .sw span { display: block; padding: 6px 8px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<header class="sf-topbar">
+  <a class="sf-topbar__brand" href="#">SOPICK<span class="dot">.</span></a>
+  <nav class="sf-topbar__menu">
+    <a href="#buttons">Buttons</a><a href="#inputs">Inputs</a><a href="#seg">Segment</a><a href="#feedback">Feedback</a>
+  </nav>
+  <div class="sf-topbar__actions">
+    <button class="sf-btn sf-btn--sm sf-btn--fill-primary">로그인</button>
+  </div>
+</header>
+
+<div class="gallery">
+  <div class="gallery__head">
+    <h1>SOPICK Foundation</h1>
+    <p>SOCAR-FRAME 2.0 기반 공통 컴포넌트. 모든 페이지가 <code>tokens.css</code> · <code>components.css</code> · <code>foundation.js</code>를 import 해 이 요소들을 재사용합니다.</p>
+    <p>반응형: 데스크톱 웹 + 모바일 앱 웹뷰(≤720px에서 SOCAR 앱 규격으로 전환).</p>
+  </div>
+
+  <!-- Colors -->
+  <section id="colors">
+    <h2>Color Tokens</h2>
+    <p class="desc">시맨틱 토큰 우선 사용 (text-*, primary-*, status-*).</p>
+    <div class="demo demo--col">
+      <div class="swatches">
+        <div class="sw"><i style="background:var(--primary-regular)"></i><span>primary #0078FF</span></div>
+        <div class="sw"><i style="background:var(--primary-heavy)"></i><span>heavy #0052E0</span></div>
+        <div class="sw"><i style="background:var(--text-strong)"></i><span>text-strong</span></div>
+        <div class="sw"><i style="background:var(--text-secondary)"></i><span>text-secondary</span></div>
+        <div class="sw"><i style="background:var(--status-positive)"></i><span>positive</span></div>
+        <div class="sw"><i style="background:var(--status-caution)"></i><span>caution</span></div>
+        <div class="sw"><i style="background:var(--status-negative-strong)"></i><span>negative</span></div>
+        <div class="sw"><i style="background:var(--border-regular)"></i><span>border</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section id="buttons">
+    <h2>ActionButton</h2>
+    <p class="desc">size(lg/md/sm/xs) × style(fill-primary/secondary/tertiary, outlined-primary/secondary)</p>
+    <div class="demo">
+      <button class="sf-btn sf-btn--lg sf-btn--fill-primary">예약하기</button>
+      <button class="sf-btn sf-btn--lg sf-btn--fill-secondary">자세히</button>
+      <button class="sf-btn sf-btn--lg sf-btn--fill-tertiary">건너뛰기</button>
+      <button class="sf-btn sf-btn--lg sf-btn--outlined-primary">변경</button>
+      <button class="sf-btn sf-btn--lg sf-btn--outlined-secondary">취소</button>
+      <button class="sf-btn sf-btn--lg sf-btn--fill-primary" disabled>비활성</button>
+    </div>
+    <div class="demo" style="margin-top:12px">
+      <button class="sf-btn sf-btn--md sf-btn--fill-primary">medium</button>
+      <button class="sf-btn sf-btn--sm sf-btn--fill-primary">small</button>
+      <button class="sf-btn sf-btn--xs sf-btn--fill-primary">xSmall</button>
+      <button class="sf-txtbtn">TextButton</button>
+      <button class="sf-txtbtn sf-txtbtn--underline">약관 보기</button>
+    </div>
+  </section>
+
+  <!-- Inputs -->
+  <section id="inputs">
+    <h2>Input · TextArea</h2>
+    <p class="desc">variant: filled(흰 배경) / outlined(회색 배경) / underlined. label · helper · error 상태.</p>
+    <div class="demo demo--col" style="gap:18px; max-width:420px">
+      <label class="sf-field">
+        <span class="sf-field__label">이름<span class="req">*</span></span>
+        <span class="sf-field__box"><input type="text" placeholder="홍길동"><button class="sf-field__clear" aria-label="지우기">✕</button></span>
+      </label>
+      <label class="sf-field sf-field--outlined">
+        <span class="sf-field__label">휴대폰 번호</span>
+        <span class="sf-field__box"><input type="tel" placeholder="010-1234-5678"></span>
+        <span class="sf-field__help">인증번호를 받을 번호를 입력하세요</span>
+      </label>
+      <label class="sf-field is-error sf-field--underlined">
+        <span class="sf-field__label">이메일</span>
+        <span class="sf-field__box"><input type="email" value="wrong@"></span>
+        <span class="sf-field__help">올바른 이메일 형식이 아닙니다</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- Segmented + Tabs + Chips -->
+  <section id="seg">
+    <h2>SegmentedControl · Tab · Chip</h2>
+    <p class="desc">짧은 필터 → Segmented / 섹션 탐색 → Tab / 빠른 선택 → Chip. Segmented 다크 variant 포함.</p>
+    <div class="demo demo--col" style="gap:16px">
+      <div class="sf-seg" style="max-width:420px">
+        <button aria-selected="true">전체<span class="cnt">9</span></button>
+        <button aria-selected="false">신차 스탁<span class="cnt">4</span></button>
+        <button aria-selected="false">중고차<span class="cnt">4</span></button>
+      </div>
+      <div class="sf-seg sf-seg--dark" style="max-width:420px; background:var(--gray-1000)">
+        <button aria-selected="true">전체<span class="cnt">9</span></button>
+        <button aria-selected="false">신차 스탁<span class="cnt">4</span></button>
+        <button aria-selected="false">중고차<span class="cnt">4</span></button>
+      </div>
+      <div class="sf-tabs" style="max-width:520px">
+        <button aria-selected="true">차량 정보</button>
+        <button aria-selected="false">옵션</button>
+        <button aria-selected="false">쏘픽 혜택</button>
+        <button aria-selected="false">리뷰</button>
+      </div>
+      <div class="sf-chips" style="max-width:520px">
+        <button class="sf-chip sf-chip--md" aria-pressed="true">월 40만</button>
+        <button class="sf-chip sf-chip--md" aria-pressed="false">월 60만</button>
+        <button class="sf-chip sf-chip--md" aria-pressed="false">월 80만</button>
+        <button class="sf-chip sf-chip--md" aria-pressed="false">월 120만</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tags -->
+  <section id="tags">
+    <h2>Tag</h2>
+    <p class="desc">fill · 시맨틱 weak배경 + strong텍스트</p>
+    <div class="demo">
+      <span class="sf-tag sf-tag--md sf-tag--info">24시간 배송</span>
+      <span class="sf-tag sf-tag--md sf-tag--positive">친환경</span>
+      <span class="sf-tag sf-tag--md sf-tag--caution">마감 임박</span>
+      <span class="sf-tag sf-tag--md sf-tag--negative">품절</span>
+      <span class="sf-tag sf-tag--md">중고차</span>
+      <span class="sf-tag sf-tag--md sf-tag--outlined">수입차</span>
+    </div>
+  </section>
+
+  <!-- Card + List -->
+  <section id="card">
+    <h2>Card · List row</h2>
+    <div class="demo demo--col" style="gap:16px; align-items:stretch">
+      <div class="sf-card" style="max-width:420px">
+        <div class="sf-card__header"><div class="t-title1 c-strong">테슬라 모델 Y</div></div>
+        <div class="sf-card__divider"></div>
+        <div class="sf-card__body"><div class="t-body3 c-secondary">롱레인지 AWD · 전기 · 511km</div></div>
+        <div class="sf-card__footer"><button class="sf-btn sf-btn--md sf-btn--fill-primary sf-btn--block">80만원에 구독하기</button></div>
+      </div>
+      <div class="sf-list" style="max-width:420px">
+        <button class="sf-list__row"><span class="sf-list__label">다른 모델로 변경</span><span class="sf-list__chevron">›</span></button>
+        <button class="sf-list__row"><span class="sf-list__label">결제수단 변경</span><span class="sf-list__value">신한 ···1234</span><span class="sf-list__chevron">›</span></button>
+        <button class="sf-list__row"><span class="sf-list__label">추가 운전자 등록</span><span class="sf-list__chevron">›</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback -->
+  <section id="feedback">
+    <h2>Modal · Alert · Snackbar</h2>
+    <p class="desc">데스크톱=센터 다이얼로그 / 모바일=하단 시트. Footer 1:2 비율.</p>
+    <div class="demo">
+      <button class="sf-btn sf-btn--md sf-btn--fill-primary" data-sf-open="demoModal">모달 열기</button>
+      <button class="sf-btn sf-btn--md sf-btn--outlined-secondary" data-sf-open="demoAlert">Alert 열기</button>
+      <button class="sf-btn sf-btn--md sf-btn--fill-tertiary" onclick="sfSnackbar('변경 신청이 완료되었어요')">Snackbar</button>
+    </div>
+  </section>
+</div>
+
+<!-- Modal -->
+<div class="sf-modal" id="demoModal" role="dialog" aria-modal="true">
+  <div class="sf-modal__dim"></div>
+  <div class="sf-modal__panel">
+    <div class="sf-modal__handle"></div>
+    <div class="sf-modal__header"><div class="sf-modal__title">구독 조건 변경</div></div>
+    <div class="sf-modal__body">
+      <p class="t-body3 c-secondary" style="margin:0">이용 기간과 월 요금을 다시 설정하면 예상 견적이 갱신됩니다. 위약금 없이 변경 가능합니다.</p>
+    </div>
+    <div class="sf-modal__footer">
+      <button class="sf-btn sf-btn--lg sf-btn--fill-secondary" data-sf-close>닫기</button>
+      <button class="sf-btn sf-btn--lg sf-btn--fill-primary" data-sf-close>변경 적용</button>
+    </div>
+  </div>
+</div>
+
+<!-- Alert -->
+<div class="sf-alert" id="demoAlert" role="alertdialog" aria-modal="true">
+  <div class="sf-alert__dim"></div>
+  <div class="sf-alert__panel">
+    <div class="sf-alert__title">구독을 해지할까요?</div>
+    <div class="sf-alert__body">지금 해지하면 남은 혜택이 사라집니다.</div>
+    <div class="sf-alert__buttons">
+      <button class="sf-btn sf-btn--lg sf-btn--fill-secondary" data-sf-close>취소</button>
+      <button class="sf-btn sf-btn--lg sf-btn--fill-primary" data-sf-close>해지</button>
+    </div>
+  </div>
+</div>
+
+<script src="foundation.js"></script>
+</body>
+</html>

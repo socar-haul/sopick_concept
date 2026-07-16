@@ -1,0 +1,315 @@
+/* =========================================================================
+   SOPICK Foundation — Components
+   SOCAR-FRAME 2.0 컴포넌트 규격(실측)을 반응형 웹으로 이식.
+   데스크톱 웹 + 모바일 앱 웹뷰 동시 지원. tokens.css 다음에 import.
+   클래스 접두사 .sf- (SOCAR Frame)
+   ========================================================================= */
+
+/* ---------- Reset / Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font: var(--body2);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.sr-only {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ---------- Layout helpers ---------- */
+.sf-container { width:100%; max-width:var(--page-max); margin:0 auto; padding:0 var(--page-pad); }
+.sf-stack > * + * { margin-top: var(--sp-400); }
+.sf-row { display:flex; align-items:center; gap:var(--sp-200); }
+.sf-spacer { flex:1; }
+
+/* =========================================================================
+   TopAppBar  ·  SOCAR-FRAME 2.0
+   데스크톱: 로고 + 메뉴 + 액션 / 모바일(≤720): 52px 앱바 (LeftSlot·Title·Trailing)
+   ========================================================================= */
+.sf-topbar {
+  position: sticky; top:0; z-index:60;
+  height: var(--topbar-h);
+  display:flex; align-items:center; gap:var(--sp-800);
+  padding: 0 var(--page-pad);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-regular);
+}
+.sf-topbar__brand { display:flex; align-items:baseline; gap:6px; font: var(--title1); font-weight:700; letter-spacing:-.03em; color:var(--text-strong); }
+.sf-topbar__brand .dot { color: var(--primary-regular); }
+.sf-topbar__menu { display:flex; gap:var(--sp-150); }
+.sf-topbar__menu a { padding:8px 14px; border-radius:var(--radius-250); font: var(--body3); color:var(--text-primary); transition:background .18s var(--ease), color .18s var(--ease); }
+.sf-topbar__menu a:hover { background:var(--gray-100); color:var(--text-strong); }
+.sf-topbar__actions { margin-left:auto; display:flex; align-items:center; gap:var(--sp-200); }
+/* 모바일 전용 슬롯 (기본 숨김) */
+.sf-topbar__left, .sf-topbar__title { display:none; }
+.sf-topbar__back {
+  width:36px; height:36px; border:none; background:transparent; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text-strong);
+}
+.sf-topbar__back:hover { background:var(--gray-100); }
+
+@media (max-width: 720px) {
+  .sf-topbar { height:var(--topbar-h-mobile); gap:0; padding:6px 10px; }
+  .sf-topbar__menu { display:none; }
+  /* general 타입: 타이틀 좌측 정렬. back 버튼이 있으면 .sf-topbar--back로 노출 */
+  .sf-topbar--back .sf-topbar__brand { display:none; }
+  .sf-topbar--back .sf-topbar__left { display:flex; align-items:center; }
+  .sf-topbar--back .sf-topbar__title {
+    display:block; flex:1; font: var(--title1); color:var(--text-strong);
+    padding:5px 0 5px 6px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .sf-topbar__iconbtn { width:32px; height:32px; }
+}
+
+/* =========================================================================
+   ActionButton  ·  SOCAR-FRAME 2.0
+   size(lg/md/sm/xs) × style(fill-primary/secondary/tertiary, outlined-primary/secondary)
+   ⚠️ 높이 고정 없음 — padding + line-height 기반
+   ========================================================================= */
+.sf-btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:2px;
+  border:none; cursor:pointer; text-align:center; white-space:nowrap;
+  font: var(--title2); transition:background .15s var(--ease), color .15s var(--ease), border-color .15s var(--ease);
+}
+.sf-btn:disabled { cursor:not-allowed; opacity:.4; }
+.sf-btn--block { display:flex; width:100%; }
+
+/* sizes */
+.sf-btn--lg { font: var(--title2); padding:16px 22px; border-radius:var(--radius-350); }
+.sf-btn--md { font: var(--title3); padding:12px 18px; border-radius:var(--radius-300); }
+.sf-btn--sm { font: var(--title4); padding:10px 16px; border-radius:var(--radius-250); }
+.sf-btn--xs { font: var(--caption2); padding:6px 10px; border-radius:var(--radius-200); }
+
+/* fill variants */
+.sf-btn--fill-primary   { background:var(--primary-regular); color:var(--white); }
+.sf-btn--fill-primary:hover:not(:disabled)   { background:var(--primary-heavy); }
+.sf-btn--fill-secondary { background:var(--blue-100); color:var(--primary-heavy); }
+.sf-btn--fill-secondary:hover:not(:disabled) { background:#C2E0FF; }
+.sf-btn--fill-tertiary  { background:var(--gray-100); color:var(--text-primary); }
+.sf-btn--fill-tertiary:hover:not(:disabled)  { background:var(--gray-200); }
+/* outlined variants */
+.sf-btn--outlined-primary   { background:var(--white); color:var(--primary-regular); box-shadow:inset 0 0 0 1px var(--primary-regular); }
+.sf-btn--outlined-primary:hover:not(:disabled)   { background:var(--blue-50); }
+.sf-btn--outlined-secondary { background:var(--white); color:var(--text-primary); box-shadow:inset 0 0 0 1px var(--gray-300); }
+.sf-btn--outlined-secondary:hover:not(:disabled) { background:var(--gray-50); }
+
+/* TextButton */
+.sf-txtbtn { display:inline-flex; align-items:center; gap:4px; background:none; border:none; cursor:pointer; padding:0; font: var(--title3); color:var(--primary-regular); }
+.sf-txtbtn--secondary { color:var(--text-secondary); }
+.sf-txtbtn--tertiary { color:var(--text-tertiary); }
+.sf-txtbtn--underline { text-decoration:underline; text-underline-offset:2px; }
+
+/* IconButton */
+.sf-iconbtn { display:inline-flex; align-items:center; justify-content:center; border:none; background:transparent; border-radius:50%; cursor:pointer; color:var(--text-strong); transition:background .15s var(--ease); }
+.sf-iconbtn:hover { background:var(--gray-100); }
+.sf-iconbtn--xs{ width:28px; height:28px; } .sf-iconbtn--sm{ width:32px; height:32px; }
+.sf-iconbtn--md{ width:36px; height:36px; } .sf-iconbtn--lg{ width:44px; height:44px; }
+
+/* =========================================================================
+   Input / TextArea  ·  SOCAR-FRAME 2.0
+   variant: filled(기본, 흰 배경 위) / outlined(회색 배경 위) / underlined
+   ========================================================================= */
+.sf-field { display:flex; flex-direction:column; gap:6px; }
+.sf-field__label { font: var(--title4); color:var(--text-primary); }
+.sf-field__label .req { color:var(--status-negative-strong); margin-left:2px; }
+.sf-field__box {
+  display:flex; align-items:center; gap:8px;
+  padding:14px 16px; border-radius:var(--radius-300);
+  background:var(--gray-100); border:1px solid transparent;
+  transition:border-color .15s var(--ease), background .15s var(--ease);
+}
+.sf-field__box input, .sf-field__box textarea {
+  flex:1; border:none; background:transparent; outline:none; padding:0; margin:0;
+  font: var(--body2); color:var(--text-strong); width:100%; resize:none;
+}
+.sf-field__box input::placeholder, .sf-field__box textarea::placeholder { color:var(--text-tertiary); }
+.sf-field__box:focus-within { border-color:var(--primary-regular); background:var(--white); }
+/* variants */
+.sf-field--outlined .sf-field__box { background:var(--white); border-color:var(--border-regular); }
+.sf-field--underlined .sf-field__box { background:transparent; border:none; border-bottom:1px solid var(--gray-300); border-radius:0; padding-left:0; padding-right:0; }
+.sf-field--underlined .sf-field__box:focus-within { border-bottom-color:var(--primary-regular); }
+/* states */
+.sf-field.is-error .sf-field__box { border-color:var(--status-negative-strong); background:var(--white); }
+.sf-field.is-error.sf-field--underlined .sf-field__box { border-bottom-color:var(--status-negative-strong); }
+.sf-field__help { font: var(--caption2); color:var(--text-tertiary); }
+.sf-field.is-error .sf-field__help { color:var(--status-negative-strong); }
+.sf-field__box[aria-disabled="true"], .sf-field__box:has(input:disabled) { background:var(--gray-100); opacity:.6; }
+/* clear/trailing */
+.sf-field__clear { width:20px; height:20px; border:none; background:var(--gray-300); color:var(--white); border-radius:50%; cursor:pointer; display:none; align-items:center; justify-content:center; font-size:12px; line-height:1; flex:none; }
+.sf-field__box.has-value .sf-field__clear { display:flex; }
+
+/* =========================================================================
+   SegmentedControl  ·  SOCAR-FRAME 2.0 (type=slide)
+   흰 pill이 슬라이드. JS(positionSegInd)로 pill 좌표 계산. 다크 variant 제공.
+   ========================================================================= */
+.sf-seg {
+  position:relative; display:flex; gap:0; padding:4px; height:44px; box-sizing:border-box;
+  border-radius:var(--radius-400); background:var(--gray-200);
+}
+.sf-seg__ind {
+  position:absolute; top:0; left:0; z-index:0; width:0; height:0; border-radius:var(--radius-300);
+  background:var(--white); box-shadow:rgba(38,47,60,.12) 0 0 4px 0; pointer-events:none;
+  transition:transform .2s var(--ease), width .2s var(--ease);
+}
+.sf-seg button {
+  position:relative; z-index:1; flex:1; height:36px; padding:6px; border:none; background:transparent; cursor:pointer;
+  border-radius:var(--radius-300); font: var(--body2); font-size:15px; color:var(--text-secondary);
+  transition:color .2s var(--ease);
+}
+.sf-seg button .cnt { color:var(--primary-regular); margin-left:4px; }
+.sf-seg button[aria-selected="true"] { color:var(--gray-1000); }
+/* 다크 variant (다크 배경 위) */
+.sf-seg--dark { background:rgba(0,0,0,.14); }
+.sf-seg--dark .sf-seg__ind { background:var(--gray-600); box-shadow:0 2px 10px rgba(0,0,0,.45); }
+.sf-seg--dark button { color:var(--gray-500); }
+.sf-seg--dark button .cnt { color:var(--blue-400); }
+.sf-seg--dark button[aria-selected="true"] { color:var(--white); }
+
+/* =========================================================================
+   Tab  ·  SOCAR-FRAME 2.0 (언더라인 인디케이터, 가로 스크롤)
+   ========================================================================= */
+.sf-tabs { position:relative; display:flex; gap:4px; border-bottom:1px solid var(--border-regular); overflow-x:auto; scrollbar-width:none; }
+.sf-tabs::-webkit-scrollbar { display:none; }
+.sf-tabs button { flex:0 0 auto; border:none; background:none; cursor:pointer; padding:12px 14px; font: var(--title3); color:var(--text-tertiary); border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .18s var(--ease), border-color .18s var(--ease); }
+.sf-tabs button[aria-selected="true"] { color:var(--text-primary); border-bottom-color:var(--text-primary); }
+
+/* =========================================================================
+   Chip  ·  SOCAR-FRAME 2.0 (Selection Chip)
+   ========================================================================= */
+.sf-chip { flex:0 0 auto; white-space:nowrap; border:1px solid transparent; cursor:pointer; background:var(--gray-100); color:var(--text-primary); transition:all .16s var(--ease); }
+.sf-chip--md { padding:8px 14px; border-radius:var(--radius-full); font: var(--title4); }
+.sf-chip--sm { padding:6px 12px; border-radius:var(--radius-full); font: var(--caption1); }
+.sf-chip:hover { background:var(--gray-200); }
+.sf-chip[aria-pressed="true"], .sf-chip.is-selected { background:var(--blue-50); color:var(--primary-regular); border-color:var(--primary-regular); }
+.sf-chips { display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+.sf-chips::-webkit-scrollbar { display:none; }
+
+/* =========================================================================
+   Tag  ·  SOCAR-FRAME 2.0 (fill, 시맨틱 weak배경 + strong텍스트)
+   ========================================================================= */
+.sf-tag { display:inline-flex; align-items:center; gap:3px; font-weight:600; background:var(--gray-100); color:var(--text-primary); }
+.sf-tag--sm { font-size:11px; line-height:16px; padding:3px 7px; border-radius:6px; }
+.sf-tag--md { font-size:12px; line-height:18px; padding:4px 8px; border-radius:6px; }
+.sf-tag--lg { font-size:13px; line-height:20px; padding:5px 10px; border-radius:8px; }
+.sf-tag--info     { background:var(--status-info-weak);     color:var(--status-info); }
+.sf-tag--positive { background:var(--status-positive-weak); color:var(--status-positive-strong); }
+.sf-tag--caution  { background:var(--status-caution-weak);  color:var(--status-caution); }
+.sf-tag--negative { background:var(--status-negative-weak); color:var(--status-negative-strong); }
+.sf-tag--outlined { background:transparent; box-shadow:inset 0 0 0 1px var(--border-regular); color:var(--text-secondary); }
+
+/* =========================================================================
+   Card
+   ========================================================================= */
+.sf-card { background:var(--surface); border:1px solid var(--border-regular); border-radius:var(--radius-350); overflow:hidden; }
+.sf-card__header { padding:14px 16px 10px; }
+.sf-card__body { padding:10px 16px 14px; }
+.sf-card__footer { padding:10px 16px 14px; border-top:1px solid var(--divider-weak); }
+.sf-card__divider { height:1px; background:var(--divider-regular); margin:0 16px; }
+
+/* =========================================================================
+   List row  (마이페이지 셀프서비스, 설정 등)
+   ========================================================================= */
+.sf-list { background:var(--surface); border:1px solid var(--border-regular); border-radius:var(--radius-350); overflow:hidden; }
+.sf-list__row { display:flex; align-items:center; gap:12px; padding:16px; cursor:pointer; border:none; background:none; width:100%; text-align:left; border-bottom:1px solid var(--divider-weak); transition:background .15s var(--ease); }
+.sf-list__row:last-child { border-bottom:none; }
+.sf-list__row:hover { background:var(--gray-50); }
+.sf-list__icon { width:24px; height:24px; flex:none; display:flex; align-items:center; justify-content:center; color:var(--text-secondary); }
+.sf-list__label { flex:1; font: var(--body2); color:var(--text-primary); }
+.sf-list__value { font: var(--body3); color:var(--text-tertiary); }
+.sf-list__chevron { color:var(--text-tertiary); flex:none; }
+
+/* =========================================================================
+   Divider
+   ========================================================================= */
+.sf-divider { height:1px; background:var(--divider-regular); border:none; margin:0; }
+.sf-divider--thick { height:8px; background:var(--gray-100); }
+
+/* =========================================================================
+   Checkbox / Radio  (label 래핑)
+   ========================================================================= */
+.sf-check, .sf-radio { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font: var(--body3); color:var(--text-primary); }
+.sf-check input, .sf-radio input { position:absolute; opacity:0; width:0; height:0; }
+.sf-check__box, .sf-radio__box { width:22px; height:22px; flex:none; border:1.5px solid var(--gray-300); background:var(--white); display:flex; align-items:center; justify-content:center; transition:all .15s var(--ease); }
+.sf-check__box { border-radius:6px; }
+.sf-radio__box { border-radius:50%; }
+.sf-check__box svg { width:14px; height:14px; opacity:0; }
+.sf-radio__box::after { content:""; width:10px; height:10px; border-radius:50%; background:var(--white); transform:scale(0); transition:transform .15s var(--ease); }
+.sf-check input:checked + .sf-check__box { background:var(--primary-regular); border-color:var(--primary-regular); }
+.sf-check input:checked + .sf-check__box svg { opacity:1; }
+.sf-radio input:checked + .sf-radio__box { background:var(--primary-regular); border-color:var(--primary-regular); }
+.sf-radio input:checked + .sf-radio__box::after { transform:scale(1); }
+
+/* =========================================================================
+   Badge  ·  SOCAR-FRAME 2.0
+   ========================================================================= */
+.sf-badge-wrap { position:relative; display:inline-flex; }
+.sf-badge { position:absolute; top:-4px; right:-4px; min-width:18px; height:18px; padding:0 5px; border-radius:999px; background:var(--notification-red); color:var(--white); font:600 11px/18px var(--font-sans); text-align:center; }
+.sf-badge--dot { min-width:8px; width:8px; height:8px; padding:0; top:-2px; right:-2px; }
+
+/* =========================================================================
+   Modal / BottomSheet  ·  SOCAR-FRAME 2.0
+   데스크톱: 센터 다이얼로그 / 모바일(≤720): 하단 시트 (dvh 대응)
+   ========================================================================= */
+.sf-modal { position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:24px; }
+.sf-modal.is-open { display:flex; }
+.sf-modal__dim { position:absolute; inset:0; background:rgba(20,26,36,.5); animation:sf-fade .2s var(--ease); }
+.sf-modal__panel {
+  position:relative; z-index:1; width:100%; max-width:480px; max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px);
+  background:var(--surface); border-radius:var(--radius-500); display:flex; flex-direction:column; overflow:hidden;
+  box-shadow:var(--shadow-lg); animation:sf-pop .22s var(--ease);
+}
+.sf-modal__header { flex:0 0 auto; padding:20px 24px 8px; }
+.sf-modal__title { font: var(--heading3); color:var(--text-strong); }
+.sf-modal__body { flex:1; overflow-y:auto; padding:12px 24px 20px; }
+.sf-modal__footer { flex:0 0 auto; display:flex; gap:12px; padding:16px 24px 20px; border-top:1px solid var(--divider-weak); }
+/* Footer 1:2 표준 (닫기 fill-secondary : CTA fill-primary) */
+.sf-modal__footer .sf-btn:first-child { flex:1; }
+.sf-modal__footer .sf-btn:last-child { flex:2; }
+.sf-modal__handle { display:none; }
+
+@media (max-width: 720px) {
+  .sf-modal { align-items:flex-end; padding:0; }
+  .sf-modal__panel { max-width:none; border-radius:var(--radius-500) var(--radius-500) 0 0; max-height:calc(100vh - 24px); max-height:calc(100dvh - 24px); animation:sf-slideup .26s var(--ease); }
+  .sf-modal__handle { display:block; width:36px; height:4px; border-radius:999px; background:var(--gray-300); margin:8px auto 0; flex:none; }
+}
+
+/* =========================================================================
+   Alert  ·  SOCAR-FRAME 2.0 (센터 모달, 데스크톱·모바일 공통)
+   ========================================================================= */
+.sf-alert { position:fixed; inset:0; z-index:110; display:none; align-items:center; justify-content:center; padding:24px; }
+.sf-alert.is-open { display:flex; }
+.sf-alert__dim { position:absolute; inset:0; background:rgba(20,26,36,.5); }
+.sf-alert__panel { position:relative; z-index:1; width:100%; max-width:320px; background:var(--surface); border-radius:var(--radius-500); padding:24px 20px 20px; text-align:center; box-shadow:var(--shadow-lg); animation:sf-pop .2s var(--ease); }
+.sf-alert__graphic { margin:0 auto 12px; }
+.sf-alert__title { font: var(--title1); color:var(--text-strong); }
+.sf-alert__body { margin-top:6px; font: var(--body3); color:var(--text-secondary); }
+.sf-alert__buttons { margin-top:20px; display:flex; gap:8px; }
+.sf-alert__buttons .sf-btn { flex:1; }
+
+/* =========================================================================
+   Snackbar  ·  SOCAR-FRAME 2.0 (하단 토스트)
+   ========================================================================= */
+.sf-snackbar { position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); z-index:120; display:flex; align-items:center; gap:12px; max-width:calc(100% - 32px); padding:14px 18px; border-radius:var(--radius-300); background:var(--gray-900); color:var(--white); box-shadow:var(--shadow-lg); opacity:0; pointer-events:none; transition:opacity .2s var(--ease), transform .2s var(--ease); }
+.sf-snackbar.is-open { opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+.sf-snackbar__icon { flex:none; display:flex; }
+.sf-snackbar__text { font: var(--body3); }
+.sf-snackbar__action { margin-left:8px; background:none; border:none; color:var(--blue-300); font: var(--title4); cursor:pointer; flex:none; }
+
+/* =========================================================================
+   Skeleton
+   ========================================================================= */
+.sf-skeleton { background:linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 37%, var(--gray-100) 63%); background-size:400% 100%; border-radius:var(--radius-300); animation:sf-shimmer 1.4s ease infinite; }
+
+/* ---------- Keyframes ---------- */
+@keyframes sf-fade { from{opacity:0;} to{opacity:1;} }
+@keyframes sf-pop { from{opacity:0; transform:scale(.96);} to{opacity:1; transform:scale(1);} }
+@keyframes sf-slideup { from{transform:translateY(100%);} to{transform:translateY(0);} }
+@keyframes sf-shimmer { from{background-position:100% 0;} to{background-position:-100% 0;} }

@@ -1,0 +1,150 @@
+/* =========================================================================
+   SOPICK Foundation — Design Tokens
+   SOCAR-FRAME 2.0 (socarframe.socar.me) 기반. 값은 레퍼런스 실측.
+   모든 페이지가 이 파일을 첫 번째로 import 한다.
+   ========================================================================= */
+:root {
+  /* ---------- Color · Common ---------- */
+  --white: #FFFFFF;
+  --black: #000000;
+
+  /* ---------- Color · Gray ---------- */
+  --gray-50:  #F9F9FB;
+  --gray-100: #F2F3F8;
+  --gray-200: #E5E8EF;
+  --gray-300: #CBD1DC;
+  --gray-400: #B4BBCB;
+  --gray-500: #99A1B1;
+  --gray-600: #697383;
+  --gray-700: #4A5667;
+  --gray-800: #354153;
+  --gray-900: #262F3C;
+  --gray-1000:#141A24;
+
+  /* ---------- Color · Blue (Brand) ---------- */
+  --blue-50:  #EBF5FF;
+  --blue-100: #D6EBFF;
+  --blue-200: #99CEFF;
+  --blue-300: #6BB5FF;
+  --blue-400: #3393FF;
+  --blue-500: #0078FF;
+  --blue-600: #0069FF;
+  --blue-700: #0052E0;
+  --blue-800: #0042C7;
+  --blue-900: #0033A9;
+
+  /* ---------- Semantic · Text ---------- */
+  --text-strong:    #141A24;
+  --text-primary:   #354153;
+  --text-secondary: #697383;
+  --text-tertiary:  #99A1B1;
+  --text-disabled:  #B4BBCB;
+  --text-on-primary:#FFFFFF;
+
+  /* ---------- Semantic · Brand ---------- */
+  --primary-regular: #0078FF;
+  --primary-strong:  #0069FF;
+  --primary-heavy:   #0052E0;
+
+  /* ---------- Semantic · Surface / Border ---------- */
+  --bg-page:        #FFFFFF;
+  --bg-regular:     #F2F3F8;   /* background-regular */
+  --surface:        #FFFFFF;
+  --border-weak:    #F2F3F8;
+  --border-regular: #E5E8EF;
+  --divider-weak:   #F2F3F8;
+  --divider-regular:#E5E8EF;
+
+  /* ---------- Semantic · Status ---------- */
+  --status-info-weak:      #EBF5FF;
+  --status-info:           #0078FF;
+  --status-positive-weak:  #E6FEF0;
+  --status-positive:       #04CA81;
+  --status-positive-strong:#00BB83;
+  --status-caution-weak:   #FFF8E6;
+  --status-caution:        #FF8800;
+  --status-negative-weak:  #FFF0F3;
+  --status-negative:       #FF3A5B;
+  --status-negative-strong:#F51441;
+  --notification-red:      #FF3A5B;
+
+  /* ---------- Radius (4px 그리드) ---------- */
+  --radius-200: 8px;
+  --radius-250: 10px;
+  --radius-300: 12px;
+  --radius-350: 14px;
+  --radius-400: 16px;
+  --radius-500: 20px;
+  --radius-full: 999px;
+
+  /* ---------- Spacing (1 unit = 4px) ---------- */
+  --sp-0: 0px;   --sp-25: 1px;  --sp-50: 2px;  --sp-100: 4px;
+  --sp-150: 6px; --sp-200: 8px; --sp-250: 10px;--sp-300: 12px;
+  --sp-350: 14px;--sp-400: 16px;--sp-450: 18px;--sp-500: 20px;
+  --sp-550: 22px;--sp-600: 24px;--sp-700: 28px;--sp-800: 32px;
+  --sp-900: 36px;--sp-1000: 40px;
+
+  /* ---------- Typography ---------- */
+  --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Type scale (size / line-height / weight) — SOCAR-FRAME 2.0 */
+  --display1: 700 40px/50px var(--font-sans);
+  --display2: 700 36px/44px var(--font-sans);
+  --heading1: 700 26px/36px var(--font-sans);
+  --heading2: 700 24px/34px var(--font-sans);
+  --heading3: 700 22px/30px var(--font-sans);
+  --title1: 600 18px/26px var(--font-sans);
+  --title2: 600 16px/24px var(--font-sans);
+  --title3: 600 14px/22px var(--font-sans);
+  --title4: 600 13px/20px var(--font-sans);
+  --body1: 400 18px/26px var(--font-sans);
+  --body2: 400 16px/24px var(--font-sans);
+  --body3: 400 14px/22px var(--font-sans);
+  --body4: 400 13px/20px var(--font-sans);
+  --caption1: 600 12px/18px var(--font-sans);
+  --caption2: 500 12px/18px var(--font-sans);
+  --caption3: 600 10px/16px var(--font-sans);
+
+  /* ---------- Elevation ---------- */
+  --shadow-sm: 0 1px 3px rgba(20,26,36,.06), 0 1px 2px rgba(20,26,36,.08);
+  --shadow-md: 0 4px 16px rgba(20,26,36,.10);
+  --shadow-lg: 0 12px 32px rgba(20,26,36,.16);
+
+  /* ---------- Motion ---------- */
+  --ease: cubic-bezier(.4,0,.2,1);
+
+  /* ---------- Layout ---------- */
+  --topbar-h: 56px;          /* 데스크톱 */
+  --topbar-h-mobile: 52px;   /* SOCAR TopAppBar 실측 */
+  --page-max: 1200px;        /* 데스크톱 콘텐츠 최대폭 */
+  --page-pad: 24px;
+}
+
+@media (max-width: 720px) {
+  :root { --page-pad: 16px; }   /* SOCAR 콘텐츠 좌우 spacing-400 */
+}
+
+/* ---------- Typography utility classes ---------- */
+.t-display1{ font: var(--display1); letter-spacing:-.6px; }
+.t-display2{ font: var(--display2); letter-spacing:-.6px; }
+.t-heading1{ font: var(--heading1); }
+.t-heading2{ font: var(--heading2); }
+.t-heading3{ font: var(--heading3); }
+.t-title1{ font: var(--title1); }
+.t-title2{ font: var(--title2); }
+.t-title3{ font: var(--title3); }
+.t-title4{ font: var(--title4); }
+.t-body1{ font: var(--body1); }
+.t-body2{ font: var(--body2); }
+.t-body3{ font: var(--body3); }
+.t-body4{ font: var(--body4); }
+.t-caption1{ font: var(--caption1); }
+.t-caption2{ font: var(--caption2); }
+.t-caption3{ font: var(--caption3); }
+
+/* ---------- Text color utilities ---------- */
+.c-strong{ color: var(--text-strong); }
+.c-primary{ color: var(--text-primary); }
+.c-secondary{ color: var(--text-secondary); }
+.c-tertiary{ color: var(--text-tertiary); }
+.c-brand{ color: var(--primary-regular); }
